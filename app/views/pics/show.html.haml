@@ -1,6 +1,8 @@
 %h1= @pic.title
 %p= @pic.description
-
+%p Pic By
+= @pic.user.email 
+%br
 = link_to "Back", root_path
 = link_to "Edit", edit_pic_path
 = link_to "Delete", pic_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } 
