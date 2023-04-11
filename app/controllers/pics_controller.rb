@@ -1,7 +1,8 @@
 class PicsController < ApplicationController
+	before_action :find_pic, only: [:show, :edit, :update, :destroy]
 
 	def index
-
+		@pics = Pic.all.order("created_at DESC")
 	end
 
 	def show
@@ -15,14 +16,30 @@ class PicsController < ApplicationController
 	def create
 		@pic =  Pic.new(pic_params)
 		if @pic.save
-			# redirect_to @pic
+			redirect_to @pic, notice: "Yes It was posted!"
 		else
 			render 'new'
 		end
 	end
 
+	def edit
+		
+	end
+
+	def update
+		
+	end
+
+	def destroy
+		
+	end
+
 	private
 		def pic_params
 			params.permit(:title, :description)
+		end
+
+		def find_pic
+			@pic = Pic.find(params[:id])
 		end
 end
