@@ -10,7 +10,7 @@ class PicsController < ApplicationController
 	end
 
 	def new
-		@pic =  Pic.new(pic_params)
+		@pic =  Pic.new
 	end
 
 	def create
@@ -27,16 +27,24 @@ class PicsController < ApplicationController
 	end
 
 	def update
-		
+		if @pic.update(pic_params)
+			redirect_to @pic, notice:"Congrats! Pic was updated!"
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
-		
+		@pic.destroy
+		redirect_to root_path, notice: "Pic was successfully deleted"
 	end
 
 	private
 		def pic_params
-			params.permit(:title, :description)
+			# binding.pry
+
+			params.require(:pic).permit(:title, :description)
+			# params.permit(:title, :description)
 		end
 
 		def find_pic

@@ -51,6 +51,7 @@ gem "sassc-rails"
 gem 'haml'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'pry'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
